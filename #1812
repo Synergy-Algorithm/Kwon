@@ -1,0 +1,35 @@
+#include <iostream>
+#include <cstdlib>
+#include <cstdio> 
+#include <algorithm> 
+#include <vector> 
+using namespace std; 
+const int MAXN = 1000; 
+int a[MAXN];
+int main(){
+	ios_base::sync_with_stdio(false); 
+	cin.tie(NULL); 
+	int n; 
+	cin >> n; 
+	int total = 0;  
+	for (int i = 0; i < n; i++){
+		cin >> a[i]; 
+		total += a[i]; 
+	}
+	total /= 2; 
+	int k = (n-1)/2;
+	vector<int> v; 
+	for (int i = 0; i < n; i++){
+		int a_i = total; 
+		for (int j = i,cnt = 0; cnt < k; cnt++,j += 2){
+			j %= n; 
+			a_i -= a[j];  
+		}
+		v.push_back(a_i); 
+	}
+	for (int i = 1; i < v.size(); i++){
+		cout << v[i] << endl; 
+	}
+	cout << v[0] << endl;
+	return 0; 
+}  
